@@ -7,12 +7,12 @@ create table if not exists bills (
     description VARCHAR(255),
     amount BIGINT not null ,
     bill_date DATE ,
-    deadline DATE
+    deadline DATE not null
 );
 
 create table if not exists student (
     student_id BIGINT AUTO_INCREMENT PRIMARY KEY ,
-    first_name VARCHAR(10) ,
+    first_name VARCHAR(10) not null ,
     last_name VARCHAR(10) ,
     email VARCHAR(255) unique not null ,
     password VARCHAR(255) not null
@@ -26,9 +26,9 @@ create table if not exists student_bills (
 
 create table if not exists student_payment (
     student_payment_id BIGINT AUTO_INCREMENT PRIMARY KEY ,
-    student_id BIGINT ,
-    amount BIGINT ,
+    student_id BIGINT not null ,
+    amount BIGINT not null ,
     description VARCHAR(255) ,
     payment_date DATE ,
-    bill_id BIGINT
+    bill_id BIGINT not null
 );
