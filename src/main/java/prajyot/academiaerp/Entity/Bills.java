@@ -35,8 +35,8 @@ public class Bills {
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Student_bills> studentBills;
 
-    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Student_payment> studentPayments;
+//    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL,orphanRemoval = true)
+//    private Set<Student_payment> studentPayments;
 
 
 }

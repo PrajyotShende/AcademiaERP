@@ -37,7 +37,7 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Student_bills> studentBills;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Student_payment> studentPayments;
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL,orphanRemoval = true)
+//    private Set<Student_payment> studentPayments;
 
 }
