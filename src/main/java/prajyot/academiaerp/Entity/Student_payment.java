@@ -35,4 +35,21 @@ public class Student_payment {
     @JoinColumn(name = "bill_id" , nullable = false)
     private Bills bill;
 
+    @Column(name = "total_amt_paid", nullable = false)
+    private Long totalAmtPaid;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", columnDefinition = "ENUM('partial', 'completed', 'due') DEFAULT 'due'")
+    private PaymentStatus status;
+
+    public enum PaymentStatus {
+        partial,
+        completed,
+        due
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "student_bill_id", nullable = true)
+    private Student_bills studentBill;
+
 }

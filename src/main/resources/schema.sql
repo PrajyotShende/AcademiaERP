@@ -30,5 +30,9 @@ create table if not exists student_payment (
     amount BIGINT not null ,
     description VARCHAR(255) ,
     payment_date DATE ,
-    bill_id BIGINT not null
+    bill_id BIGINT not null ,
+    total_amt_paid BIGINT DEFAULT 0,
+    status ENUM('partial', 'completed', 'due') DEFAULT 'due',
+    student_bill_id BIGINT,
+    FOREIGN KEY (student_bill_id) REFERENCES student_bills(student_bill_id)
 );
