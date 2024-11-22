@@ -15,7 +15,5 @@ public record StudentLoginResponse(
         @JsonProperty("email")
         String email
 
-//        @JsonProperty("token")
-//        String token
 ) {
 }

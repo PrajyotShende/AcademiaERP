@@ -33,7 +33,8 @@ public class StudentService {
             throw new RuntimeException("Invalid password");
         }
 
-//        String JwtToken = JWTUtil.generateToken(student.getEmail());
+        String JwtToken = JWTUtil.generateToken(student.getEmail());
+        System.out.println("Generated JWT Token: " + JwtToken );
 
         return studentLoginMapper.toResponse(student);
     }

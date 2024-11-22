@@ -2,24 +2,28 @@ package prajyot.academiaerp.Util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+
+import java.security.Key;
 import java.util.Date;
 
 public class JWTUtil {
 
-    private static final String SECRET_KEY = "N7wIV+KJ2xOQpfAekL4YXd9gbnJMs8SJ";
+    private static final Key SECRET_KEY = Keys.hmacShaKeyFor("N7wIV+KJ2xOQpfAekL4YXd9gbnJMs8SJ".getBytes());
 
     public static String generateToken(String email) {
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours expiration time
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 ))
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public static String extractEmail(String token) {
-        return Jwts.parser()
+        return Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
+                .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
@@ -34,8 +38,9 @@ public class JWTUtil {
     }
 
     private static Date extractExpiration(String token) {
-        return Jwts.parser()
+        return Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
+                .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getExpiration();

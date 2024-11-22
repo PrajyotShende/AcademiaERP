@@ -2,4 +2,7 @@
 # VALUES ('Prajyot','Shende','shendeprajyot2@gmail.com',SHA2('Prajyot', 256));
 # insert into bills (description,amount,bill_date,deadline)
 # VALUES ('Fees',10000,'2024-11-22','2025-12-31');
+# insert into student_bills (student_id, bill_id)
+# VALUES (1,1)
 # # delete from student where student_id = 9;
+
