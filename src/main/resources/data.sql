@@ -35,3 +35,4 @@
 # INSERT INTO student_payment (amount, description, payment_date, total_amt_paid, status, student_bill_id)
 # VALUES
 #     (10000, 'Full payment of Tuition Fee', '2024-12-01', 10000, 'completed', 5);
+# hi
