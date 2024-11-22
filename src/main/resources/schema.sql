@@ -26,11 +26,9 @@ create table if not exists student_bills (
 
 create table if not exists student_payment (
     student_payment_id BIGINT AUTO_INCREMENT PRIMARY KEY ,
-    student_id BIGINT not null ,
     amount BIGINT not null ,
     description VARCHAR(255) ,
     payment_date DATE ,
-    bill_id BIGINT not null ,
     total_amt_paid BIGINT DEFAULT 0,
     status ENUM('partial', 'completed', 'due') DEFAULT 'due',
     student_bill_id BIGINT,

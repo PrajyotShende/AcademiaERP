@@ -18,9 +18,9 @@ public class Student_payment {
     @Column(name = "student_payment_id")
     private Long studentPaymentId;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
+//    @ManyToOne
+//    @JoinColumn(name = "student_id", nullable = false)
+//    private Student student;
 
     @Column(name = "amount" , nullable = false)
     private Long amount;
@@ -31,9 +31,9 @@ public class Student_payment {
     @Column(name = "payment_date")
     private java.sql.Date paymentDate;
 
-    @ManyToOne
-    @JoinColumn(name = "bill_id" , nullable = false)
-    private Bills bill;
+//    @ManyToOne
+//    @JoinColumn(name = "bill_id" , nullable = false)
+//    private Bills bill;
 
     @Column(name = "total_amt_paid", nullable = false)
     private Long totalAmtPaid;
