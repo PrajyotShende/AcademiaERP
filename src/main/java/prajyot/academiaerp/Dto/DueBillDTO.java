@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BillStatusDTO {
-    private Long billId;
+public class DueBillDTO {
+    private int studentId;
+    private Long BillId;
     private String description;
-    private double totalAmount;
+    private double totalFee;
     private double paidAmount;
     private double dueAmount;
-//    private String status;
 }
