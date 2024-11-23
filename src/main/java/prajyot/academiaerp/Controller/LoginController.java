@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import prajyot.academiaerp.Dto.StudentLoginRequest;
-import prajyot.academiaerp.Dto.StudentLoginResponse;
 import prajyot.academiaerp.Service.StudentService;
 
 @RestController
@@ -16,10 +15,10 @@ public class LoginController {
     private StudentService studentService;
 
     @PostMapping("/login")
-    public ResponseEntity<StudentLoginResponse> login(@Valid @RequestBody StudentLoginRequest loginRequest) {
+    public ResponseEntity<String> login(@Valid @RequestBody StudentLoginRequest loginRequest) {
         try {
-            StudentLoginResponse loginResponse = studentService.login(loginRequest);
-            return ResponseEntity.ok(loginResponse);
+            String jwtToken = studentService.login(loginRequest);
+            return ResponseEntity.ok("token: " + jwtToken);
         } catch (RuntimeException e) {
             return ResponseEntity.status(401).body(null);
         }

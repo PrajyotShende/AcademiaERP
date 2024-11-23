@@ -20,7 +20,7 @@ public class StudentService {
     @Autowired
     private StudentLoginMapper studentLoginMapper;
 
-    public StudentLoginResponse login(StudentLoginRequest loginRequest) {
+    public String login(StudentLoginRequest loginRequest) {
         Optional<Student> opt = student_Repository.findByEmail(loginRequest.email());
         if (opt.isEmpty()) {
             throw new RuntimeException("Student not found");
@@ -34,8 +34,8 @@ public class StudentService {
         }
 
         String JwtToken = JWTUtil.generateToken(student.getEmail());
-        System.out.println("Generated JWT Token: " + JwtToken );
-
-        return studentLoginMapper.toResponse(student);
+//        System.out.println("Generated JWT Token: " + JwtToken );
+            return JwtToken;
+//        return studentLoginMapper.toResponse(student);
     }
 }
