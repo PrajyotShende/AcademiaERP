@@ -6,16 +6,16 @@ public record StudentLoginResponse(
         @JsonProperty("studentId")
         Long studentId,
 
-        @JsonProperty("firstName")
-        String firstName,
+//        @JsonProperty("firstName")
+//        String firstName,
+//
+//        @JsonProperty("lastName")
+//        String lastName,
+//
+//        @JsonProperty("email")
+//        String email
 
-        @JsonProperty("lastName")
-        String lastName,
-
-        @JsonProperty("email")
-        String email
-
-//        @JsonProperty("token")
-//        String token
+        @JsonProperty("token")
+        String token
 ) {
 }

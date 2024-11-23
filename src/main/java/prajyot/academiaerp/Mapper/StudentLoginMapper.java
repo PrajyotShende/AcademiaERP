@@ -19,13 +19,10 @@ public class StudentLoginMapper {
 
 
 
-    public StudentLoginResponse toResponse(Student student) {
+    public StudentLoginResponse toResponse(Student student, String jwtToken) {
         return new StudentLoginResponse(
                 student.getStudentId(),
-                student.getFirstName(),
-                student.getLastName(),
-                student.getEmail()
-//                jwtToken
+                jwtToken
         );
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import prajyot.academiaerp.Dto.StudentLoginRequest;
 import prajyot.academiaerp.Service.StudentService;
+import prajyot.academiaerp.Dto.StudentLoginResponse;
 
 @RestController
 @RequestMapping("/api/student")
@@ -15,10 +16,10 @@ public class LoginController {
     private StudentService studentService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@Valid @RequestBody StudentLoginRequest loginRequest) {
+    public ResponseEntity<StudentLoginResponse> login(@Valid @RequestBody StudentLoginRequest loginRequest) {
         try {
-            String jwtToken = studentService.login(loginRequest);
-            return ResponseEntity.ok("token: " + jwtToken);
+            StudentLoginResponse response = studentService.login(loginRequest);
+            return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
             return ResponseEntity.status(401).body(null);
         }
