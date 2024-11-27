@@ -9,7 +9,6 @@ import prajyot.academiaerp.Dto.StudentLoginResponse;
 import prajyot.academiaerp.Dto.StudentLoginRequest;
 import prajyot.academiaerp.Mapper.StudentLoginMapper;
 import prajyot.academiaerp.Repository.Student_Repository;
-
 import java.util.Optional;
 
 @Service
@@ -20,22 +19,23 @@ public class StudentService {
     @Autowired
     private StudentLoginMapper studentLoginMapper;
 
-    public StudentLoginResponse login(StudentLoginRequest loginRequest) {
+    public StudentLoginResponse login(StudentLoginRequest loginRequest)
+    {
         Optional<Student> opt = student_Repository.findByEmail(loginRequest.email());
-        if (opt.isEmpty()) {
+        if (opt.isEmpty())
+        {
             throw new RuntimeException("Student not found");
         }
 
         Student student = opt.get();
         String hashPassword = SHA256Util.hashPassword(loginRequest.password());
 
-        if (!hashPassword.equals(student.getPassword())) {
+        if (!hashPassword.equals(student.getPassword()))
+        {
             throw new RuntimeException("Invalid password");
         }
 
         String jwtToken = JWTUtil.generateToken(student.getEmail());
-
-        // Return StudentLoginResponse with both studentId and token
         return studentLoginMapper.toResponse(student, jwtToken);
     }
 }

@@ -1,3 +1,5 @@
+# use AcademiaERP;
+
 # INSERT INTO student (first_name, last_name, email, password)
 # VALUES
 #     ('Prajyot', 'Shende', 'shendeprajyot2@gmail.com', SHA2('Prajyot', 256)),
@@ -36,3 +38,9 @@
 # VALUES
 #     (10000, 'Full payment of Tuition Fee', '2024-12-01', 10000, 'completed', 5);
 # hi
+
+
+# USE AcademiaERP;
+#
+# INSERT INTO student (first_name, last_name, email, password)
+# VALUES ('test', 'user', 'testuser@example.com', SHA2('password', 256));

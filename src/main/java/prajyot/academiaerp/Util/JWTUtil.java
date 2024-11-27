@@ -9,11 +9,13 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JWTUtil {
+public class JWTUtil
+{
 
     private static final Key SECRET_KEY = Keys.hmacShaKeyFor("N7wIV+KJ2xOQpfAekL4YXd9gbnJMs8SJ".getBytes());
 
-    public static String generateToken(String email) {
+    public static String generateToken(String email)
+    {
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
@@ -22,7 +24,8 @@ public class JWTUtil {
                 .compact();
     }
 
-    public static String extractEmail(String token) {
+    public static String extractEmail(String token)
+    {
         return Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
                 .build()
@@ -31,7 +34,8 @@ public class JWTUtil {
                 .getSubject();
     }
 
-    public static boolean validateToken(String token, String email) {
+    public static boolean validateToken(String token, String email)
+    {
         return email.equals(extractEmail(token)) && !isTokenExpired(token);
     }
 
@@ -39,7 +43,8 @@ public class JWTUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    private static Date extractExpiration(String token) {
+    private static Date extractExpiration(String token)
+    {
         return Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
                 .build()
